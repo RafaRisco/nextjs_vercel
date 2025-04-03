@@ -12,6 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+type Todo = {
+  id: number;
+  title: string;
+}
+
+interface HomeProps {
+  todos: Todo[];
+}
+
+
 export async function getServerSideProps() {
   const res = await fetch("https://jsonplaceholder.typicode.com/todos");
   const data = await res.json();
@@ -23,7 +33,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({ todos }) {
+export default function Home( { todos }: HomeProps) {
 
   // const [todos, setTodos] = useState([]);
 
